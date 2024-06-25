@@ -1,0 +1,2 @@
+# Using input function
+
