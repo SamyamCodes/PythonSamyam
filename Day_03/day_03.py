@@ -15,3 +15,10 @@ print(f"The addition of{a} and {b} is : {add} ")
 print(f"The multiplication of{a} and {b} is : {mul} ")
 print(f"The division of{a} and {b} is : {div} ")
 print(f"The subtraction of{a} and {b} is : {sub} ")
+
+
+print("The value of", a, "+", 3, "is: ", a + b)
+print("The value of", a, "-", 3, "is: ", a - b)
+print("The value of", a, "*", 3, "is: ", a * b)
+print("The value of", a, "/", 12, "is: ", a / b)
+
