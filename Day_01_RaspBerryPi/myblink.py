@@ -10,6 +10,6 @@ while cont =='Y':
                 time.sleep(1)
                 GPIO.output(11, 0)
                 time.sleep(1)
-                cont = input("Do You Want to Continue: (Y for Yes) ")
+        cont = input("Do You Want to Continue: (Y for Yes) ")
 GPIO.cleanup()
 
