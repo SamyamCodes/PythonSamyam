@@ -45,3 +45,34 @@ except KeyboardInterrupt():  # Interrupt is obtained by Ctrl + C
     print("GPIO ready to Go.")
 
 
+# Now, let's use the push button as a toggle switch
+
+import RPi.GPIO as GPIO
+from time import sleep
+delay = .1
+led = 38
+inputpin = 40
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(led, GPIO.OUT)
+GPIO.setup(inputpin, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # This is done for pull up / down resistor inside the raspberrypi by itself.
+
+ledstate = 0
+buttonstate = 1
+buttonstateold = 0
+
+try:
+    while True:
+        buttonstate = GPIO.input(inputpin)
+        print(buttonstate)
+        if buttonstate == 1 and buttonstateold == 0:
+            ledstate = not ledstate
+            GPIO.output(led, ledstate)
+        buttonstateold = buttonstate
+        sleep(delay)
+
+        sleep(delay)
+except KeyboardInterrupt():  # Interrupt is obtained by Ctrl + C
+    GPIO.cleanup()
+    print("GPIO ready to Go.")
