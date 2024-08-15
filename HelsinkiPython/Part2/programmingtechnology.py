@@ -7,3 +7,4 @@ if (number>100):
       print(f"Its value is now {number}")
 print( f"{number} must be my lucky number!")
 print("Have a nice day!")
+
