@@ -27,3 +27,4 @@ Sample output
 How many points [0-100]: -3
 Grade: impossible!
 '''
+# Write your solution here
