@@ -7,3 +7,7 @@ def square (n):
   
 square(5)
 print(square.__doc__)
+
+# PEP 8 >> For readibility of pyhon codes
+# The ZEN of python
+import this
