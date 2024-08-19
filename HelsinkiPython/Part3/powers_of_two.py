@@ -14,3 +14,20 @@ pn = 1
 while pn < up_limit+1:
     print(pn)
     pn *= 2
+
+# Write your solution here
+up = int(input("Upper limit:"))
+b = int(input("Base:"))
+num =1
+while num < up+1:
+    print(num)
+    num*= b
+    
+# Write your solution here
+up = int(input("Limit:"))
+sums = 0
+num = 1
+while sums < up:
+    sums +=num
+    num+=1
+print(sums)
