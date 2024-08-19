@@ -53,3 +53,35 @@ ste = len(ask)
 while ste > 0:
     print(ask[ste - 1] )
     ste -= 1
+
+# Write your solution here
+ask = input("Please type in a string:")
+if (ask[len(ask)-2] == ask[1]):
+    print(f"The second and the second to last characters are {ask[1]}")
+else:
+    print("The second and the second to last characters are different")
+
+# Write your solution here
+width = int(input("Width:"))
+print("#" * width)
+
+# Write your solution here
+wi = int(input("Width:"))
+he = int(input("Height:"))
+num = 1
+while num <= he:
+    print("#" * wi)
+    num +=1
+
+'''
+Programming exercise:
+Underlining
+'''
+# Write your solution here
+while True:
+    st = input("Please type in a string:")
+    if st == "":
+        break
+    else: 
+        print(st)
+        print("-" * len(st))
