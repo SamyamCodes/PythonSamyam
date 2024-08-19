@@ -13,3 +13,15 @@ while sums < up:
     
     current_number += 1
 print(f"The consecutive sum : {strings} = {sums}")
+
+'''
+The * operator can also be used with a string, when the other operand is an integer. 
+The string operand is then repeated the number of times specified by the integer. 
+For example this would work:
+
+word = "banana"
+print(word*3)
+
+Sample output
+bananabananabanana
+'''

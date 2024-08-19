@@ -31,3 +31,4 @@ while sums < up:
     sums +=num
     num+=1
 print(sums)
+

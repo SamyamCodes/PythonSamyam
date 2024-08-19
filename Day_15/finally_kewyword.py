@@ -7,7 +7,7 @@ def func1():
     except:
         print("Some error occured.")
 
-    finally:
+    finally: #Finally block is always executed. 
         print("I am always executing.")
 
 x = func1()
