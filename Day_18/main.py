@@ -1,0 +1,4 @@
+import samyam
+
+samyam.welcome()
+
