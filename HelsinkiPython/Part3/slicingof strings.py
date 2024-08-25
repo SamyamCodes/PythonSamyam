@@ -15,3 +15,24 @@ print(input_string[:3])
 
 # if the end index is left out, it defaults to the length of the string
 print(input_string[4:])
+
+
+'''
+Please write a program which asks the user to type in a string. 
+The program then prints out all the substrings which begin with the first character,
+ from the shortest to the longest. Have a look at the example below.
+
+Sample output
+Please type in a string: test
+t
+te
+tes
+test
+'''
+
+# Write your solution here
+strings = input("Please type in a string:")
+s= 1
+for p in strings:
+    print(strings[0:s])
+    s+=1
