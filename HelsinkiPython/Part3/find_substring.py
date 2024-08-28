@@ -67,3 +67,16 @@ Please type in a word: python
 Please type in a character: n
 '''
 
+# Find the first substring
+# Write your solution here
+ask = input("Please type in a word:")
+car = input("Please type in a character:")
+
+index = ask.find(car)
+end_index = index +3
+to_print = ask[index:end_index]
+if(len(to_print)>=3):
+    print(to_print)
+else:
+    print("")
+    
