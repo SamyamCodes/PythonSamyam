@@ -16,3 +16,12 @@ while True:
     sum += number
 
 print (f"The sum is {sum}")
+
+
+while True:
+    number = int(input("Please type in a number: "))
+    if number == -1:
+        break
+    while number > 0:
+        print(number)
+        number -= 1
