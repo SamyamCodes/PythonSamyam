@@ -26,3 +26,24 @@ def seven_brothers():
     print("Tuomas")
 if __name__ == "__main__":
     seven_brothers()
+
+# Arguments and Parameters
+'''
+While argument is used with the data passed to the function when the function is 
+called, inside the function the arguments are assigned to variables called parameters. 
+So, approximately, when the function is called, we call the passed bits of data arguments, 
+but when we are defining the function, we call them parameters.
+'''
+def first_character(text):
+   if text:
+       print(text[0])
+# write your code here
+
+# testing the function:
+if __name__ == "__main__":
+    first_character('python')
+    first_character('yellow')
+    first_character('tomorrow')
+    first_character('heliotrope')
+    first_character('open')
+    first_character('night')
