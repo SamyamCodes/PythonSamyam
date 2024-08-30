@@ -47,3 +47,21 @@ if __name__ == "__main__":
     first_character('heliotrope')
     first_character('open')
     first_character('night')
+
+# Write your code here
+# Testing the function
+if __name__ == "__main__":
+    mean(1, 2, 3)
+def mean(x,y,z):
+    me = (x+y+z)/3
+    print(me)
+
+# Write your solution here
+def print_many_times(string, number):
+    x = 1
+    while x <= number:
+        print(string)
+        x+=1
+# You can test your function by calling it within the following block
+if __name__ == "__main__":
+    print_many_times("python", 5)
