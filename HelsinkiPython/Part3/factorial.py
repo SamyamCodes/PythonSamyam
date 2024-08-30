@@ -1,4 +1,5 @@
 # Write your solution here
+
 while True:
     fact = 1
     x = 1
