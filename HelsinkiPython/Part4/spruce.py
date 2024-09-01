@@ -29,4 +29,21 @@ the text area in the terminal, the tests will not accept the solution.
     
 '''
 
+def spruce(size):
+    
+    print("a spruce!")
+    i = 0
+    while i < size:
+        
+        spaces = size - i - 1
+        stars = 2 * i + 1
+ 
+        print(" " * spaces + "*" * stars)
+        i += 1
+        
+    print(" " * (size - 1) + "*")
+       
 
+# You can test your function by calling it within the following block
+if __name__ == "__main__":
+    spruce(5)
