@@ -1,0 +1,9 @@
+Formal vs actual, parameter vs argument
+The terminology around data passed to functions can feel confusing. To make matters worse, some sources refer to what we have called parameters and arguments as formal and actual parameters. Other sources call them formal and actual arguments. The Python documentation specifies only the terms argument and parameter, so that is what we will use as well.
+
+What actually happens when the function call greet("Emily") is executed?
+In the function definition greet(name) the parameter name behaves for all intents and purposes just like a normal variable. We can use it within the function just like we have used variables in the many main functions in our programs thus far.
+In the function call greet("Emily") the argument "Emily" is just like any other string we have come across before. For example, we can assign it to a variable.
+So, when the function call is executed, the value of the argument, "Emily", is assigned to the parameter variable name. For the duration of this execution of the function, name = "Emily". When the function is called with a different argument, the value of name will be different.
+
+This terminology may all seem a bit superfluous, but computer science as a discipline does aim to be as exact a science as possible. Using well defined terminology helps.
