@@ -14,3 +14,17 @@ Item 3: 34
 [10, 250, 34]
 '''
 
+# Write your solution here
+no = int(input("How many items:"))
+x = 1
+item_list = []
+while x < no + 1:
+   
+    item = int(input((f"Item {x}:")))
+   
+    item_list.append(item)
+    x+=1
+    
+print(item_list)
+
+
