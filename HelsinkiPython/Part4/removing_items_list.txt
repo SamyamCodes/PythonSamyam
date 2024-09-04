@@ -20,10 +20,10 @@ Sample output
 It's useful to remember that the method pop also returns the removed item:
 
 my_list = [4, 2, 7, 2, 5]
-
 number = my_list.pop(2)
 print(number)
 print(my_list)
+
 Sample output
 7
 [4, 2, 2, 5]
