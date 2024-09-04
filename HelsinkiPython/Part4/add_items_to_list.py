@@ -28,3 +28,18 @@ while x < no + 1:
 print(item_list)
 
 
+# Insert Method
+'''
+ for instance this program
+
+numbers = [1, 2, 3, 4, 5, 6]
+numbers.insert(0, 10)
+print(numbers)
+numbers.insert(2, 20)
+print(numbers)
+prints out this:
+
+Sample output
+[10, 1, 2, 3, 4, 5, 6]
+[10, 1, 20, 2, 3, 4, 5, 6]
+'''
