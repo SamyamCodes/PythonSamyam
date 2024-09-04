@@ -1,0 +1,37 @@
+Adding items to a list
+The append method adds items to the end of a list. It works like this:
+
+numbers = []
+numbers.append(5)
+numbers.append(10)
+numbers.append(3)
+print(numbers)
+Sample output
+[5, 10, 3]
+
+The following example makes use of two separate lists:
+
+numbers = []
+shoe_sizes = []
+
+numbers.append(5)
+numbers.append(10)
+numbers.append(3)
+
+shoe_sizes.append(37)
+shoe_sizes.append(44)
+shoe_sizes.append(40)
+shoe_sizes.append(28)
+
+print("Numbers:")
+print(numbers)
+
+print("Shoe sizes:")
+print(shoe_sizes)
+The item is appended to the list on which the method is called:
+
+Sample output
+Numbers:
+[5, 10, 3]
+Shoe sizes:
+[37, 44, 40, 28]
