@@ -101,3 +101,39 @@ Sample output
 5
 4
 3
+
+From a range to a list
+The function range returns a range object, which in many ways behaves like a list, but isn't actually one. 
+If you try printing out the value the function returns, you will only see a description of a range object:
+
+numbers = range(2, 7)
+print(numbers)
+Sample output
+range(2, 7)
+
+The function list will convert a range into a list. The list will contain all the values that are in the range. 
+The Advanced Course in Programming course, which follows this one, will shed more light on this subject.
+
+numbers = list(range(2, 7))
+print(numbers)
+Sample output
+[2, 3, 4, 5, 6]
+
+A reminder of the demands of the automatic tests
+So far, when the exercises have asked you to write functions, the templates have looked like this:
+
+# Write your solution here
+# You can test your function by calling it within the following block
+if __name__ == "__main__":
+    sentence = "it was a dark and stormy python"
+    print(first_word(sentence))
+    print(second_word(sentence))
+    print(last_word(sentence))
+From now on there will be no more reminders in the templates to use the if __name__ == "__main__" block. 
+However, the automatic tests will still demand its use, so you will have to add the block yourself when you test your function 
+within the main function of your program.
+
+NB: some exercises, like the Palindromes exercise coming up in this section, expect you to also write code which calls 
+the function you wrote. This code should not be placed within an if __name__ == "__main__" block. 
+The automatic tests will not execute any code within that block, so your solution will not be complete if you place your function 
+calls there.
