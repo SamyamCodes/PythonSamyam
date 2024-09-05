@@ -1,0 +1,48 @@
+The for loop
+When you want to go through some ready collection of items, the Python for loop will do this for you. 
+For instance, the loop can go through all items in a list from first to last.
+
+When using a while loop the program doesn't "know" beforehand how many iterations the loop will perform. 
+It will repeat until the condition becomes false, or the loop is otherwise broken out of. 
+That is why it falls under indefinite iteration. With a for loop the number of iterations is determined when the loop is set up, 
+and so it falls under definite iteration.
+
+The idea is that the for loop takes the items in the collection one by one and performs the same actions on each. 
+The programmer does not have to worry about which item is being handled when. The syntax of the for loop is as follows:
+
+for <variable> in <collection>:
+    <block>
+The for loop takes an item in the collection, assigns it to the variable, 
+processes the block of code, and moves on to the next item. When all items in the collection have been processed, 
+execution of the program continues from the line after the loop.
+
+The following program prints out all the items in a list using a for loop:
+
+my_list = [3, 2, 4, 5, 2]
+
+for item in my_list:
+    print(item)
+Sample output
+3
+2
+4
+5
+2
+
+
+Compared to the example at the beginning of this section, the structure is much easier to understand. 
+A for loop makes straightforward traversal through a collection of items very simple.
+
+The same principle applies to characters in a string:
+
+name = input("Please type in your name: ")
+
+for character in name:
+    print(character)
+Sample output
+Please type in your name: Grace
+G
+r
+a
+c
+e
