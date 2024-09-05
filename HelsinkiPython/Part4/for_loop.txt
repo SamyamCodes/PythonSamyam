@@ -116,6 +116,7 @@ The Advanced Course in Programming course, which follows this one, will shed mor
 
 numbers = list(range(2, 7))
 print(numbers)
+
 Sample output
 [2, 3, 4, 5, 6]
 
