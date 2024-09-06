@@ -11,3 +11,14 @@ print(new_list)
 Sample output
 ['erom eno', 'elpmaxe', 'ereht', 'iH']
 '''
+def everything_reversed(lst):
+    reverse_item = []
+    for item in  lst:
+        reverse_item.append(item[::-1])
+    return reverse_item[::-1]
+
+
+if __name__ == "__main__":
+    my_list = ["Hi", "there", "example", "one more"]
+    new_list = everything_reversed(my_list)
+    print(new_list)
