@@ -1,0 +1,95 @@
+More strings and lists
+
+You are already familiar with the [] syntax for accessing a part of a string:
+
+my_string = "exemplary"
+print(my_string[3:7])
+Sample output
+mpla
+
+The same syntax works with lists. Lists can be sliced just like strings:
+
+my_list = [3,4,2,4,6,1,2,4,2]
+print(my_list[3:7])
+Sample output
+[4, 6, 1, 2]
+
+More slices
+In fact, the [] syntax works very similarly to the range function, which means we can also give it a step:
+
+my_string = "exemplary"
+print(my_string[0:7:2])
+my_list = [1,2,3,4,5,6,7,8]
+print(my_list[6:2:-1])
+Sample output
+eepa
+[7, 6, 5, 4]
+
+If we omit either of the indexes, the operator defaults to including everything. 
+Among other things, this allows us to write a very short program to reverse a string:
+
+my_string = input("Please type in a string: ")
+print(my_string[::-1])
+Sample output
+Please type in a string: exemplary
+yralpmexe
+
+Warning: using global variables within functions
+We know it is possible to assign new variables within function definitions, 
+but the function can also see variables assigned outside it, in the main function. 
+Such variables are called global variables.
+
+Using global variables from within functions is usually a bad idea. Among other issues, 
+doing so may cause bugs which are difficult to trace.
+
+Below is an example of a function which uses a global variable "by mistake":
+
+def print_reversed(names: list):
+    # using the global variable instead of the parameter by accident
+    i = len(name_list) - 1
+    while i >= 0:
+        print(name_list[i])
+        i -= 1
+
+# here the global variable is assigned
+name_list = ["Steve", "Jean", "Katherine", "Paul"]
+print_reversed(name_list)
+print()
+print_reversed(["Huey", "Dewey", "Louie"])
+Sample output
+Paul
+Katherine
+Jean
+Steve
+
+Paul
+Katherine
+Jean
+Steve
+
+Even though both function calls have the right kind of argument, the function always 
+prints out what is stored in the global variable name_list.
+
+To make matters even more muddled, remember that all code for testing your 
+functions should be placed within the if __name__ == "__main__": block for the automatic tests. 
+The previous example should be modified:
+
+def print_reversed(names: list):
+    # using the global variable instead of the parameter by accident
+    i = len(name_list) - 1
+    while i>=0:
+        print(name_list[i])
+        i -= 1
+
+# All the code for testing the function should be within this block
+if __name__ == "__main__":
+    # here the global variable is assigned
+    name_list = ["Steve", "Jean", "Katherine", "Paul"]
+    print_reversed(name_list)
+    print()
+    print_reversed(["Huey", "Dewey", "Louie"])
+Notice the global variable is assigned within the if block now.
+
+The automatic tests in the TMC system are executed without running any of the code in the if block. 
+So, in this latter example the function wouldn't even theoretically work, since 
+it refers to the variable name_list, which doesn't exist at all when the tests are executed.
