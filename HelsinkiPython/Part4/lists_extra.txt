@@ -1,3 +1,5 @@
+List Extra 
+
 Maximum, minimum and sum
 The functions max and min, short for maximum and minimum, return the greatest and smallest item in a list, respectively. 
 The function sum returns the sum of all items in a list.
