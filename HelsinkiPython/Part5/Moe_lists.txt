@@ -1,0 +1,184 @@
+Lists with different types of data
+In the previous part we mainly handled lists with integer items, but any types of values can be stored in lists. 
+A list of strings could look like this:
+
+names = ["Marlyn", "Ruth", "Paul"]
+print(names)
+names.append("David")
+print(names)
+
+print("Number of names on the list:", len(names))
+print("Names in alphabetical order:")
+names.sort()
+for name in names:
+  print(name)
+
+Sample output
+['Marlyn', 'Ruth', 'Paul']
+['Marlyn', 'Ruth', 'Paul', 'David']
+Number of names on the list: 4
+Names in alphabetical order:
+David
+Marlyn
+Paul
+Ruth
+
+Floating point numbers are also valid list items:
+
+measurements = [-2.5, 1.1, 7.5, 14.6, 21.0, 19.2]
+
+for measure in measurements:
+    print(measure)
+
+mean = sum(measurements) / len(measurements)
+
+print("The mean is:", mean)
+Sample output
+-2.5
+1.1
+7.5
+14.6
+21.0
+19.2
+The mean is: 10.15
+
+Reminder: using global variables within functions
+We know it is possible to assign new variables within function definitions, 
+but the function can also see variables assigned outside it, in the main function. 
+Such variables are called global variables.
+
+Using global variables from within functions is usually a bad idea. Among other issues, 
+doing so may cause bugs which are difficult to trace.
+
+Below is an example of a function which uses a global variable "by mistake":
+
+def print_reversed(names: list):
+    # using the global variable instead of the parameter by accident
+    i = len(name_list) - 1
+    while i >= 0:
+        print(name_list[i])
+        i -= 1
+
+# here the global variable is assigned
+name_list = ["Steve", "Jean", "Katherine", "Paul"]
+print_reversed(name_list)
+print()
+print_reversed(["Huey", "Dewey", "Louie"])
+Sample output
+Paul
+Katherine
+Jean
+Steve
+
+Paul
+Katherine
+Jean
+Steve
+
+Even though both function calls have the right kind of argument, 
+the function always prints out what is stored in the global variable name_list.
+
+To make matters even more muddled, remember that all code for testing your 
+functions should be placed within the if __name__ == "__main__": block for the automatic tests. 
+The previous example should be modified:
+
+def print_reversed(names: list):
+    # using the global variable instead of the parameter by accident
+    i = len(name_list) - 1
+    while i>=0:
+        print(name_list[i])
+        i -= 1
+
+# All the code for testing the function should be within this block
+if __name__ == "__main__":
+    # here the global variable is assigned
+    name_list = ["Steve", "Jean", "Katherine", "Paul"]
+    print_reversed(name_list)
+    print()
+    print_reversed(["Huey", "Dewey", "Louie"])
+Notice the global variable is assigned within the if block now.
+
+The automatic tests in the TMC system are executed without running 
+any of the code in the if block. 
+So, in this latter example the function wouldn't even theoretically work, 
+since it refers to the variable name_list, which doesn't exist at all when the tests are executed.
+
+Warning: overwriting a parameter and returning too early
+There are a couple of novel sources of bugs we should 
+look at before jumping into the exercises in this part. 
+Let's have a look at a function which tells us whether an integer is found within a list. 
+Both are defined as parameters of the function:
+
+def number_in_list(numbers: list, number: int):
+    for number in numbers:
+        if number == number:
+            return True
+        else:
+            return False
+This function seems to always return True. The reason is that the for loop overwrites 
+the value stored in the parameter number. Thus the condition in the if statement is always true.
+
+Renaming the parameter solves the problem:
+
+def number_in_list(numbers: list, searched_number: int):
+    for number in numbers:
+        if number == searched_number:
+            return True
+        else:
+            return False
+Now the condition in the if statement looks better. But there is a new problem, 
+since the function still doesn't seem to work correctly. 
+Trying out the following manifests a bug:
+
+found = number_in_list([1, 2, 3, 4], 3)
+print(found)  # prints out False
+The issue here is that the function returns too early, without checking all the numbers in the list.
+In fact, the function takes only the first item in the list, 
+and returns True or False depending on its value. We cannot know whether a number 
+is not present in the list until we have checked all the items in the list. 
+The return False command should be placed outside the for loop:
+
+def number_in_list(numbers: list, searched_number: int):
+    for number in numbers:
+        if number == searched_number:
+            return True
+
+    return False
+Let's have a look at another faulty function:
+
+def unique_numbers(numbers: list):
+    # a helper variable to store all the numbers we've already checked
+    numbers = []
+    for number in numbers:
+        # have we seen this number already?
+        if number in numbers:
+            return False
+        numbers.append(number)
+
+    return True
+
+unique = unique_numbers([1, 2, 2])
+print(unique)  # prints out True
+This function is supposed to check whether all numbers in a 
+list are distinct from each other, but it always returns True.
+
+Here the function again overwrites the value stored in its parameter by mistake. 
+The function tries to use the variable numbers to store all the numbers 
+already checked, but this overwrites the original argument list. Renaming the helper variable is an easy fix:
+
+def unique_numbers(numbers: list):
+    # a helper variable to store all the numbers we've already checked
+    numbers_checked = []
+    for number in numbers:
+        # have we seen this number already?
+        if number in numbers_checked:
+            return False
+        numbers_checked.append(number)
+
+    return True
+
+unique = unique_numbers([1, 2, 2])
+print(unique)  # prints out False
+Problems like this, and many others, can be located and fixed with the 
+help of the debugger or the visualisation tool. 
+Learning to use these efficiently cannot be emphasised enough.
