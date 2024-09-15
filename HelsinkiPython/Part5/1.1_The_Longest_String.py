@@ -37,3 +37,9 @@ for person in persons:
   age = person[1]
   height = person[2]
   print(f"{name}: age {age} years, height {height} meters")
+
+my_matrix = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
+
+print(my_matrix[0][1])
+my_matrix[1][0] = 10
+print(my_matrix)
