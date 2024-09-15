@@ -27,3 +27,13 @@ def longest(strings: list):
 if __name__ == "__main__":
     strings = ["hi", "hiya", "hello", "howdydoody", "hi there"]
     print(longest(strings))
+
+
+# Just out of context code:
+persons = [["Betty", 10, 1.37], ["Peter", 7, 1.25], ["Emily", 32, 1.64], ["Alan", 39, 1.78]]
+
+for person in persons:
+  name = person[0]
+  age = person[1]
+  height = person[2]
+  print(f"{name}: age {age} years, height {height} meters")
