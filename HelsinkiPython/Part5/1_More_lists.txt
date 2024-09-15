@@ -182,3 +182,255 @@ print(unique)  # prints out False
 Problems like this, and many others, can be located and fixed with the 
 help of the debugger or the visualisation tool. 
 Learning to use these efficiently cannot be emphasised enough.
+
+Lists within lists
+The items in a list can be lists themselves:
+
+my_list = [[5, 2, 3], [4, 1], [2, 2, 5, 1]]
+print(my_list)
+print(my_list[1])
+print(my_list[1][0])
+Sample output
+[[5, 2, 3], [4, 1], [2, 2, 5, 1]]
+[4, 1]
+4
+
+Why would lists within lists be useful?
+
+Remember that lists can contain items of different types. 
+You could store information about a person in a list. 
+For instance, you could include their name as the first item, their age as the second item, 
+and their height in meters as the third item:
+
+["Anne", 12, 1.45]
+
+A database of persons could then be a list, whose items would be lists containing information about a single person:
+
+persons = [["Betty", 10, 1.37], ["Peter", 7, 1.25], ["Emily", 32, 1.64], ["Alan", 39, 1.78]]
+
+for person in persons:
+  name = person[0]
+  age = person[1]
+  height = person[2]
+  print(f"{name}: age {age} years, height {height} meters")
+
+Sample output
+Betty: age 10 years, height 1.37 meters
+Peter: age 7 years, height 1.25 meters
+Emily: age 32 years, height 1.64 meters
+Alan: age 39 years, height 1.78 meters
+
+The for loop goes through the items in the outer list one by one. 
+That is, each list containing information about a 
+single person is, in turn, assigned to the variable person.
+
+Lists arent always the best way to present data, such as information about a person. 
+We will soon come across Python dictionaries, which are often better suited to such situations.
+
+Matrices
+A two-dimensional array, or a matrix, is also a natural application of a list within a list.
+
+For example, the following matrix
+1 2 3
+3 2 1
+4 5 6
+could be presented as a two-dimensional list in Python like so:
+
+my_matrix = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
+
+Since a matrix is a list containing lists, the individual elements within the matrix can be accessed using consecutive square brackets. The first index refers to the row, and the second to the column. Indexing starts from zero, so for example my_matrix[0][1] refers to the second item on the first row.
+
+my_matrix = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
+
+print(my_matrix[0][1])
+my_matrix[1][0] = 10
+print(my_matrix)
+Sample output
+2
+[[1, 2, 3], [10, 2, 1], [4, 5, 6]]
+
+Like any other list, the rows of the matrix can be traversed wth a for loop. The following code prints out each row of the matrix on a separate line:
+
+my_matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+for row in my_matrix:
+    print(row)
+Sample output
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+
+Likewise, nested loops can be used to access the individual elements. 
+The following code prints out each element in the matrix on a 
+separate line with the help of two for loops:
+
+my_matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+for row in my_matrix:
+    print("a new row")
+    for element in row:
+        print(element)
+Sample output
+a new row
+1
+2
+3
+a new row
+4
+5
+6
+a new row
+7
+8
+9
+
+Visualising code containing lists within lists
+
+Programs containing lists within lists can feel hard to grasp at first. 
+The visualisation tool from Python Tutor is a great help in understanding how they work. 
+The following is a visualisation of the example above:
+
+
+The image above reveals that a 3 by 3 matrix technically consists of four lists. 
+The first list represents the entire matrix. 
+The three remaining lists are items in the first list, and represent the rows.
+
+As multidimensional lists can be traversed with nested loops, 
+it would be natural to think of the lists themselves as nested, 
+but the image above shows us this isn't actually so. 
+Instead, the list representing the whole matrix "points" 
+to each individual list representing a row in the matrix. 
+This is called a reference, and in the following section the idea will be explored more thoroughly.
+
+In the image above the execution has progressed to the second row of the matrix, 
+and this list is what the variable row currently refers to. 
+The variable element contains the element the execution is currently at. 
+The value stored in element is the middle item in the list, i.e. 5.
+
+Accessing items in a matrix
+Accessing a single row within a matrix is simple - just choose the desired row. 
+The following function calculates the sum of the elements on a chosen row:
+
+def sum_of_row(my_matrix, row_no: int):
+    # choose the desired row from within the matrix
+    row = my_matrix[row_no]
+    row_sum = 0
+    for item in row:
+        row_sum += item
+
+    return row_sum
+
+m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
+
+my_sum = sum_of_row(m, 1)
+print(my_sum) # prints out 33 (which equals 9 + 1 + 12 + 11)
+Working with columns within a matrix is slightly more complicated, as the matrix is stored by rows:
+
+def sum_of_column(my_matrix, column_no: int):
+    # go through each row and select the item at the chosen position
+    column_sum = 0
+    for row in my_matrix:
+        column_sum += row[column_no]
+
+    return column_sum
+
+m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
+
+my_sum = sum_of_column(m, 2)
+print(my_sum) # prints out 39 (which equals 3 + 12 + 9 + 15)
+The column handled here consists of the elements at index 2 on each row.
+
+The visualisation tool is definitely recommended for understanding how these functions work.
+
+Changing the value of a single element within the matrix is simple: 
+choose a row within the matrix, and then a column within the row:
+
+def change_value(my_matrix, row_no: int, column_no: int, new_value: int):
+    # choose the desired row
+    row = my_matrix[row_no]
+    # select the correct item within the row
+    row[column_no] = new_value
+
+m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
+
+print(m)
+change_value(m, 2, 3, 1000)
+print(m)
+Sample output
+[[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
+[[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 1000], [2, 9, 15, 1]]
+
+Notice how above we used the indexes of the row and column to access a chosen element. 
+If we want to change the contents of the matrix, 
+we have to access the elements by their indexes. 
+This means that we can't use a simple for item in list loop to traverse 
+the matrix if we want to change the contents of the matrix.
+
+Instead, we will have to keep track of the indexes of the elements, 
+for example with a while loop, or a for loop using the range function. 
+The following code increases the value of each element in the matrix by one:
+
+m = [[1,2,3], [4,5,6], [7,8,9]]
+
+for i in range(len(m)): # using the number of rows in the matrix
+    for j in range(len(m[i])): # using the number of items on each row 
+        m[i][j] += 1
+
+print(m)
+Sample output
+[[2, 3, 4], [5, 6, 7], [8, 9, 10]]
+
+The outer loop goes through indexes from zero to the length of the matrix, that is, 
+the number of rows in the matrix. 
+The inner loop goes through indexes from zero to the length of each row within the matrix
+
+
+A two-dimensional array as a data structure in a game
+A matrix can be a very useful data structure in many different games. 
+For example, the grid of a sudoku game in the image below
+
+can be represented in matrix form like so:
+
+sudoku = [
+  [9, 0, 0, 0, 8, 0, 3, 0, 0],
+  [0, 0, 0, 2, 5, 0, 7, 0, 0],
+  [0, 2, 0, 3, 0, 0, 0, 0, 4],
+  [0, 9, 4, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 7, 3, 0, 5, 6, 0],
+  [7, 0, 5, 0, 6, 0, 4, 0, 0],
+  [0, 0, 7, 8, 0, 3, 9, 0, 0],
+  [0, 0, 1, 0, 0, 0, 0, 0, 3],
+  [3, 0, 0, 0, 0, 0, 0, 0, 2]
+]
+
+
+Here the value zero represents an empty square, as zero is not an acceptable value in a finished sudoku puzzle.
+
+Here is a simple function for printing out the above sudoku grid:
+
+def print_grid(sudoku):
+    for row in sudoku:
+        for square in row:
+            if square > 0:
+                print(f" {square}", end="")
+            else:
+                print(" _", end="")
+        print()
+
+print_grid(sudoku)
+The printout should look like this::
+
+
+ 9 _ _ _ 8 _ 3 _ _
+ _ _ _ 2 5 _ 7 _ _
+ _ 2 _ 3 _ _ _ _ 4
+ _ 9 4 _ _ _ _ _ _
+ _ _ _ 7 3 _ 5 6 _
+ 7 _ 5 _ 6 _ 4 _ _
+ _ _ 7 8 _ 3 9 _ _
+ _ _ 1 _ _ _ _ _ 3
+ 3 _ _ _ _ _ _ _ 2
+Any common game with a gameboard layout can be modelled in a similar fashion. 
+Among others, chess, Minesweeper, Battleship or Mastermind are all based on a two-dimensional grid. 
+For sudoku, it is natural to use numbers to represent the game state, 
+but for other games, different methods may be better.
