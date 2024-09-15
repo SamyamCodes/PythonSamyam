@@ -43,3 +43,6 @@ my_matrix = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
 print(my_matrix[0][1])
 my_matrix[1][0] = 10
 print(my_matrix)
+
+for row in my_matrix:
+    print(row)
