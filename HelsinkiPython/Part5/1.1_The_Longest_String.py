@@ -64,3 +64,17 @@ m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
 
 my_sum = sum_of_row(m, 1)
 print(my_sum) # prints out 33 (which equals 9 + 1 + 12 + 11)
+
+# Sum of Columns in a Matrix
+def sum_of_column(my_matrix, column_no: int):
+    # go through each row and select the item at the chosen position
+    column_sum = 0
+    for row in my_matrix:
+        column_sum += row[column_no]
+
+    return column_sum
+
+m = [[4, 2, 3, 2], [9, 1, 12, 11], [7, 8, 9, 5], [2, 9, 15, 1]]
+
+my_sum = sum_of_column(m, 2)
+print(my_sum) # prints out 39 (which equals 3 + 12 + 9 + 15)
